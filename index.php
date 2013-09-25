@@ -186,7 +186,7 @@ if ($currentDeveloper) {
                 $fileMd5s[$resolvedPath] = $md5;
             }
         }
-
+/*
         function test_date($x, $y) {
             global $totalPath, $fileMTimes;
             $rp = realpath($totalPath . "/" . $x);
@@ -200,6 +200,7 @@ if ($currentDeveloper) {
             return 0;
         }
         usort($files, "test_date");
+*/
     }
 }
 ?>
@@ -232,6 +233,14 @@ if ($currentDeveloper) {
   })();
 
 </script>
+<script src='http://androtransfer.com/jquery-2.0.3.min.js' type='text/javascript' />
+<script src='http://androtransfer.com/jquery.tablesorter.min.js' type='text/javascript' />
+<script type="text/javascript">
+$(document).ready(function() {
+    $("files").tablesorter({
+        sortList: [[1,0]]
+    });
+}); </script>
 </head>
 <body>
 
@@ -278,11 +287,11 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
             </div>
 
             <?php if($currentFolder): ?>
-                <div style='float: left; margin-left: 10px; width: 668px'>
+                <div style='float: left; margin-left: 10px; width: 768px'>
                     <div class='block'>
                         <h2><?= htmlspecialchars($currentFolder) ?></h2>
                         <?php if (count($files) > 0): ?>
-                            <table>
+                            <table id='files'>
                                     <tr>
                                         <th align='left'>File</th>
                                         <th align='left' width='120px' style='padding-right: 50px'>Last Mod.</th>
